@@ -1,0 +1,41 @@
+---
+# tasks file for f5_atc_deploy
+
+# do
+- import_tasks: status.yml
+  when: "do"
+- import_tasks: check_for_do.yml
+  when: "do"
+- import_tasks: create_do.yml
+  when: "do"
+- import_tasks: run_do.yml
+  when: "do"
+- import_tasks: wait_for_do.yml
+  when: "do"
+
+  # as3
+- import_tasks: auth.yml
+  when: "as3"
+- import_tasks: status.yml
+  when: "as3"
+- import_tasks: check_for_as3.yml
+  when: "as3"
+- import_tasks: create_as3.yml
+  when: "as3"
+- import_tasks: run_as3.yml
+  when: "as3"
+- import_tasks: wait_for_as3.yml
+  when: "as3"
+
+
+  # ts
+- import_tasks: auth.yml
+  when: "ts"
+- import_tasks: status.yml
+  when: "ts"
+- import_tasks: wait_for_ts.yml
+  when: "ts"
+- import_tasks: run_ts.yml
+  when: "ts"
+- import_tasks: wait_for_ts.yml
+  when: "ts"
