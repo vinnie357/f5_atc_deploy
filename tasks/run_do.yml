@@ -82,7 +82,8 @@
     return_content: true
     validate_certs: false
     body_format: json
-    body: "{{ lookup('file', doFilePath, errors='strict' ) }}"
+    #body: "{{ lookup('file', doFilePath, errors='strict' ) }}"
+    body: "{{ atc.body.do }}"
     status_code: 202, 200
   register: doResult
   delegate_to: localhost
