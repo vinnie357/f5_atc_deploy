@@ -3,39 +3,39 @@
 
 # do
 - import_tasks: status.yml
-  when: "do"
+  when: atc.tool == "do"
 - import_tasks: check_for_do.yml
-  when: "do"
+  when: atc.tool == "do"
 - import_tasks: create_do.yml
-  when: "do"
+  when: atc.tool == "do"
 - import_tasks: run_do.yml
-  when: "do"
+  when: atc.tool == "do"
 - import_tasks: wait_for_do.yml
-  when: "do"
+  when: atc.tool == "do"
 
   # as3
 - import_tasks: auth.yml
-  when: "as3"
+  when: atc.tool == "as3"
 - import_tasks: status.yml
-  when: "as3"
+  when: atc.tool == "as3"
 - import_tasks: check_for_as3.yml
-  when: "as3"
+  when: atc.tool == "as3"
 - import_tasks: create_as3.yml
-  when: "as3"
+  when: atc.tool == "as3"
 - import_tasks: run_as3.yml
-  when: "as3"
+  when: atc.tool == "as3"
 - import_tasks: wait_for_as3.yml
-  when: "as3"
+  when: atc.tool == "as3"
 
 
   # ts
 - import_tasks: auth.yml
-  when: "ts"
+  when: atc.tool == "ts"
 - import_tasks: status.yml
-  when: "ts"
+  when: atc.tool == "ts"
 - import_tasks: wait_for_ts.yml
-  when: "ts"
+  when: atc.tool == "ts"
 - import_tasks: run_ts.yml
-  when: "ts"
+  when: atc.tool == "ts"
 - import_tasks: wait_for_ts.yml
-  when: "ts"
+  when: atc.tool == "ts"

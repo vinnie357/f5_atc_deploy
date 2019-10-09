@@ -1,6 +1,6 @@
 - name: wait for AS3
   uri: 
-    url: "https://{{ provider.server }}{{ as3Url }}"
+    url: "https://{{ provider.server }}{{ as3Url }}/{{as3Result.json.id}}"
     method: GET
     headers:
       X-F5-Auth-Token: "{{ token.json.token.token }}"

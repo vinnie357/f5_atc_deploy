@@ -38,30 +38,53 @@
 #     msg: "{{ as3Status }}"
 # - debug:
 #     msg: "{{ as3FilePath }}"
-- name: as3 apps
-  find:
-    paths: "{{ filePath }}"
-    patterns: "*_as3.json"
-  register: app_list
-  delegate_to: localhost
+
+# queuing:
+# Post payload, if response code is x, body is please try agian. wait for atc.delay and retry post
+# 
+
+# - name: as3 apps
+#   find:
+#     paths: "{{ filePath }}"
+#     patterns: "*_as3.json"
+#   register: app_list
+#   delegate_to: localhost
 
 # - debug:
 #     msg: "{{ app_list }}"
 
+# example:
+# response
+#  200
+# {
+#     "id": "3d7e22d5-953b-44ed-a929-d688df7241a8",
+#     "results": [
+#         {
+#             "message": "in progress",
+#             "tenant": "",
+#             "host": "",
+#             "runtTime": 0,
+#             "code": 0
+#         }
+
+
 - name: POST AS3
   uri:
-    url: "https://{{ provider.server }}{{ as3Url }}"
+    url: "https://{{ provider.server }}{{ as3Url }}?async=true"
     method: POST
     headers:
       X-F5-Auth-Token: "{{ token.json.token.token }}"
     return_content: true
     validate_certs: false
     body_format: json
-    body: "{{ lookup('file', item.path, errors='strict' ) }}"
+    #body: "{{ lookup('file', item.path, errors='strict' ) }}"
+    body: "{{ atc.body.as3 }}"
     status_code: 200
   register: as3Result
+  until: as3Result.json.id
   loop: "{{ app_list.files }}"
   delegate_to: localhost
 # - debug:
 #     msg: "{{ as3Result }}"
     #when: doStatus.json is search("/declaration/") 
+

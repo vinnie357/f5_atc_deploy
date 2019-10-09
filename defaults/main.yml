@@ -1,2 +1,14 @@
 ---
 # defaults file for f5_atc_deploy
+
+# do
+doUrl: "/mgmt/shared/declarative-onboarding"
+doCheckUrl: "/mgmt/shared/declarative-onboarding/info"
+
+# as3
+as3Url: "/mgmt/shared/appsvcs/declare"
+as3CheckUrl: "/mgmt/shared/appsvcs/info"
+
+# ts
+tsUrl: "/mgmt/shared/telemetry/declare"
+tsCheckUrl: "/mgmt/shared/telemetry/info"

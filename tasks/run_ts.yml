@@ -61,7 +61,8 @@
     return_content: true
     validate_certs: false
     body_format: json
-    body: "{{ lookup('file', tsFilePath, errors='strict' ) }}"
+    #body: "{{ lookup('file', tsFilePath, errors='strict' ) }}"
+    body: "{{ atc.body.ts }}"
     status_code: 200
   register: tsResult
   delegate_to: localhost

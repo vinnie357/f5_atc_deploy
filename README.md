@@ -13,10 +13,54 @@ Role Variables
 
 A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
 
+## tool
+atc.tool
+- atc.as3
+## action
+atc.action
+- POST
+## json body/dec
+atc.body
+### file
+- /tool/tool.json
+### var
+- atc.body
+## where the dec is going
+provider
+- provider:
+    user: admin
+    password: superduper5
+    server: ip/host
+    port: 443
+## delay for dec
+atc.delay
+- 10
+## number of transaction retries
+atc.retries
+- 30
+## example atc object
+atc:
+    tool: as3
+    action: POST
+    body:
+        do: /device/do.json
+        as3: /app/as3.json
+        ts: /app/ts.json
+    delay: 10
+    retries: 30
+
 Dependencies
 ------------
 
 A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+
+bigip_wait
+
+provider:
+    user: admin
+    password: superduper5
+    server: ip/host
+    port: 443
 
 Example Playbook
 ----------------
