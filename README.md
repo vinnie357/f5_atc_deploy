@@ -15,10 +15,14 @@ A description of the settable variables for this role should go here, including 
 
 ## tool
 atc.tool
-- atc.as3
+- as3
+- do
+- ts
 ## action
 atc.action
 - POST
+- GET
+- PATCH
 ## json body/dec
 atc.body
 ### file
